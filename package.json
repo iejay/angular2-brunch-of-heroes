@@ -35,9 +35,9 @@
     "@angular/router": "^2.0.0-rc.1",
     "es6-promise": "^3.1.2",
     "es6-shim": "^0.35.0",
-    "git-digest-brunch": "^1.0.3",
     "reflect-metadata": "0.1.2",
-    "rxjs": "^5.0.0-beta.6",
+    "rxjs": "^5.0.0-beta.7",
+    "systemjs": "^0.19.27",
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
@@ -52,6 +52,15 @@
     "javascript-brunch": "^2.0.0",
     "tslint": "^3.9.0",
     "typescript": "^1.8.10",
-    "uglify-js-brunch": "^2.0.1"
+    "uglify-js-brunch": "^2.0.1",
+    "git-digest-brunch": "^1.0.3"
+  },
+  "overrides": {
+    "when": {
+      "main": "dist/browser/when.js"
+    },
+    "systemjs": {
+      "main": "dist/system.js"
+    }
   }
 }

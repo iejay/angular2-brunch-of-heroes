@@ -16,5 +16,19 @@ exports.config = {
     templates: {
       joinTo: 'main.js'
     }
+  },
+  modules: {
+    wrapper: false,
+    definition: false,
+    nameCleaner: (path) => path.replace(/\//, '\\')
+  },
+  npm: {
+    enabled: true,
+    /*globals: {
+      System: 'systemjs'
+    },*/
+    static: [
+      'node_modules/systemjs/dist/system.js'      
+    ]
   }
 };

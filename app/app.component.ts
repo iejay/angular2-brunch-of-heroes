@@ -1,54 +1,38 @@
 import {Component} from '@angular/core';
-import {Routes, Route, Router, ROUTER_DIRECTIVES} from '@angular/router';
-import {FORM_PROVIDERS} from '@angular/common';
+import { Route, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
+import {HeroesComponent} from './heroes.component';
+import {HeroService} from './hero.service';
+import {DashboardComponent} from './dashboard.component';
+import {HeroDetailComponent} from './hero-detail.component';
 
-import {Home} from './home';
-import {About} from './about';
-import {NavBar} from './navbar.component';
-
-/*
- * App Component
- * Top Level Component
- */
-@Component({
-  selector: 'app',
-  providers: [...FORM_PROVIDERS],
-  directives: [...ROUTER_DIRECTIVES, NavBar],
-  pipes: [],
-  styles: [`
-    :host {
-      font-family: sans-serif;
-    }
-    header, footer, main {
-      margin: 0 1em;
-    }
-    footer {
-      margin-top: 1em;
-      border-top: 1px solid #ccc;
-      padding-top: 0.5em;
-    }
-  `],
-  template: `
-    <header>
-      <h1>Hello {{ name }}</h1>
-    </header>
-    <navbar></navbar>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-    <footer>
-      Brunch for Angular 2 by <a [href]="url">Colin Bate</a>
-    </footer>
-  `
-})
 @Routes([
-  new Route({path: '', component: Home}),
-  new Route({path: 'about', component: About})
+    {
+        path: '/heroes',
+        component: HeroesComponent
+    },
+    {
+        path: '/',
+        component: DashboardComponent
+    },
+    {
+        path: '/dashboard',
+        component: DashboardComponent
+    },
+    {
+        path: '/detail/:id',
+        component: HeroDetailComponent
+    }
 ])
-export class App {
-  name: string = 'Brunch for Angular 2';
-  url: string = 'http://colin.is/blog';
-  constructor() {
-
-  }
+@Component({
+    selector: 'my-app',
+    templateUrl: 'app/app.component.html',
+    styleUrls: ['app/app.component.css'],
+    directives: [ROUTER_DIRECTIVES],
+    providers: [
+        ROUTER_PROVIDERS,
+        HeroService
+    ]
+})
+export class AppComponent {
+    title = 'Tour of Heroes';
 }
